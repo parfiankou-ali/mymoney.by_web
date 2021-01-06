@@ -12,7 +12,8 @@
 <script>
   import Navigation from '../components/Navigation/Navigation'
   export default {
-    components: {Navigation}
+    components: {Navigation},
+    middleware: ['auth']
   }
 </script>
 

@@ -3,7 +3,8 @@
 
 <script>
 export default {
-  layout: 'site'
+  layout: 'site',
+  middleware: ['auth']
 }
 </script>
 
