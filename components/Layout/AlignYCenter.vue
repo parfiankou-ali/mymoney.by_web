@@ -1,18 +1,18 @@
 <template>
-  <div class="page">
+  <div class="align-y-center">
     <slot />
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Page'
+    name: 'AlignYCenter'
   }
 </script>
 
 <style lang="stylus" scoped>
-  .page
+  .align-y-center
     display flex
-    flex-direction column
     width 100%
+    align-items center
 </style>

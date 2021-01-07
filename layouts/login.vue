@@ -12,7 +12,6 @@
 <style lang="stylus" scoped>
   .app
     display flex
+    width 100%
     min-height 100vh
-    align-items center
-    padding 20px
 </style>
