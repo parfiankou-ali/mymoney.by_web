@@ -1,6 +1,6 @@
 <template>
   <div class="navigation">
-    <div class="navigation__section">
+    <div class="navigation__section" @click="toggleMenu">
       <div class="navigation__icon">
         <NavigationIcon>
           <IconMenu />
@@ -29,7 +29,12 @@
   import NavigationIcon from "./NavigationIcon";
   export default {
     name: 'Navigation',
-    components: {NavigationIcon, IconMenu, AlignXCenter, Logo}
+    components: {NavigationIcon, IconMenu, AlignXCenter, Logo},
+    methods: {
+      toggleMenu () {
+        console.log('toggle menu')
+      }
+    }
   }
 </script>
 
