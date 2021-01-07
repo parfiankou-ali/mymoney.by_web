@@ -18,6 +18,22 @@ export default {
     linkExactActiveClass: 'is-exact'
   },
 
+  axios: {
+    progress: false
+  },
+
+  publicRuntimeConfig: {
+    axios: {
+      browserBaseURL: process.env.API_BROWSER_URL + '/' + process.env.API_VERSION + '/'
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_SERVER_URL + '/' + process.env.API_VERSION + '/'
+    }
+  },
+
   i18n: {
     locales: [{ code: 'ru', iso: 'ru-RU', file: 'ru-RU/index.js' }],
     langDir: 'assets/locales/',
@@ -38,6 +54,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/axios',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -52,6 +69,7 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-i18n'
   ],

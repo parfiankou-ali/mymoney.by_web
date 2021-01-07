@@ -1,0 +1,28 @@
+<template>
+  <div class="errors" v-show="errors.length">
+    <div class="errors__error" v-for="error in errors">
+      {{ error }}
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'Errors',
+    props: {
+      errors: {
+        type: Array,
+        required: true
+      }
+    }
+  }
+</script>
+
+<style lang="stylus" scoped>
+  .errors
+    padding 2px 4px
+    font-size rem(16px)
+    font-weight 600
+    background-color rgba(255, 0, 0, 0.1)
+    color red
+</style>
