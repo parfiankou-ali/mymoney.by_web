@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {InternalErrorHttpException} from '../app/Exceptions/App/InternalErrorHttpException'
+  import {InternalErrorHttpException} from '../../app/Exceptions/App/InternalErrorHttpException'
 
   export default {
     name: 'Form',

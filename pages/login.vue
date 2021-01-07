@@ -29,14 +29,14 @@
 <script>
 import Page from '../components/Page'
 import Logo from '../components/Navigation/Logo'
-import Credentials from '../components/Credentials'
-import Button from '../components/Button'
-import Form from '../components/Form'
+import Credentials from '../components/Form/Credentials/Credentials'
+import Button from '../components/Standart/Button'
+import Form from '../components/Form/Form'
 import SplitY from '../components/Layout/SplitY'
 import AlignXYCenter from '../components/Layout/AlignXYCenter'
 import AlignXCenter from '../components/Layout/AlignXCenter'
 import {InvalidCredentialsHttpException} from '../app/Exceptions/User/InvalidCredentialsHttpException'
-import Errors from "../components/Errors";
+import Errors from "../components/Form/Errors";
 import {InternalErrorHttpException} from "../app/Exceptions/App/InternalErrorHttpException";
 
 export default {

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import Errors from './Errors'
+  import Errors from '../Errors'
   export default {
     name: 'CredentialInput',
     components: {Errors},
