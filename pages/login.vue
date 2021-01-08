@@ -38,6 +38,7 @@ import AlignXCenter from '../components/Layout/AlignXCenter'
 import {InvalidCredentialsHttpException} from '../app/Exceptions/User/InvalidCredentialsHttpException'
 import Errors from "../components/Form/Errors";
 import {InternalErrorHttpException} from "../app/Exceptions/App/InternalErrorHttpException";
+import { Plugins } from '@capacitor/core'
 
 export default {
   components: {Errors, AlignXCenter, AlignXYCenter, SplitY, Form, Button, Credentials, Logo, Page},
@@ -66,6 +67,9 @@ export default {
     removeErrors () {
       this.errors = []
     }
+  },
+  mounted () {
+    Plugins.Keyboard.show();
   }
 }
 </script>

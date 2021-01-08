@@ -2,7 +2,7 @@
   <div class="credentials">
     <div class="credentials__body">
       <div class="credentials__section">
-        <CredentialInput name="email" type="text" :placeholder="$t('Auth.Login')" autofocus />
+        <CredentialInput name="email" type="email" :placeholder="$t('Auth.Login')" autofocus />
       </div>
       <div class="credentials__section">
         <CredentialInput name="password" type="password" :placeholder="$t('Auth.Password')" />
