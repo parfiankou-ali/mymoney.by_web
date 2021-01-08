@@ -1,4 +1,13 @@
 export default {
+  // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
+  ssr: false,
+
+  // Target (https://go.nuxtjs.dev/config-target)
+  target: 'static',
+
+  // Progress bar component that's shown between routes
+  loading: false,
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'mymoney.by',
@@ -20,18 +29,6 @@ export default {
 
   axios: {
     progress: false
-  },
-
-  publicRuntimeConfig: {
-    axios: {
-      browserBaseURL: process.env.API_BROWSER_URL + '/' + process.env.API_VERSION + '/'
-    }
-  },
-
-  privateRuntimeConfig: {
-    axios: {
-      baseURL: process.env.API_SERVER_URL + '/' + process.env.API_VERSION + '/'
-    }
   },
 
   i18n: {
@@ -62,7 +59,9 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    '@nuxtjs/dotenv',
+    ['@nuxtjs/dotenv', {
+      filename: `.env.${process.env.NODE_ENV}`,
+    }],
     '@nuxtjs/style-resources'
   ],
 
@@ -76,5 +75,15 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extend (config, { isDev, isClient }) {
+      if (!isDev) {
+        // relative links, please.
+        config.output.publicPath = '/nuxt/'
+      }
+      return config;
+    }
+  },
+  generate: {
+    fallback: false
   }
 }

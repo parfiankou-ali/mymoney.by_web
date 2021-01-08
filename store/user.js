@@ -1,22 +1,20 @@
-import Cookies from 'js-cookie'
-
 export const state = () => ({
-  token: null,
-  user: null
+  token: localStorage.getItem('token'),
+  user: localStorage.getItem('user')
 })
 
 export const mutations = {
   logOut (state) {
     state.token = null
 
-    Cookies.remove('token')
-    Cookies.remove('user')
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   },
   signIn (state, { token, user }) {
     state.token = token
     state.user = user
 
-    Cookies.set('token', JSON.stringify(token), { sameSite: 'Strict', secure: true })
-    Cookies.set('user', JSON.stringify(user), { sameSite: 'Strict', secure: true })
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', user);
   }
 }

@@ -9,7 +9,7 @@
           <div class="login__credentials">
             <Credentials />
           </div>
-          <div class="login__errors">
+          <div class="login__errors" v-if="errors.length">
             <Errors :errors="errors" />
           </div>
           <SplitY>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Page from '../components/Page'
+import Page from '../components/Standart/Page/Page'
 import Logo from '../components/Navigation/Logo'
 import Credentials from '../components/Form/Credentials/Credentials'
 import Button from '../components/Standart/Button'
