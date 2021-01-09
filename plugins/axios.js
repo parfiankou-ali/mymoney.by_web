@@ -13,7 +13,7 @@ export default function ({ $axios, store, redirect }) {
   $axios.onError(error => {
     if (error.response.status === 400 && error.response.data.status_code === 401) {
       this.$store.commit('user/logOut')
-      redirect('/login')
+      redirect('/signIn')
     }
   })
 }

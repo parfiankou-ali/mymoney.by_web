@@ -22,6 +22,8 @@
   .errors
     padding 2px 4px
     font-size rem(16px)
+    border-radius 5px
+    line-height 1
     font-weight 600
     background-color rgba(255, 0, 0, 0.1)
     color red

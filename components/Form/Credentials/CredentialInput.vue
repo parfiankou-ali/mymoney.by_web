@@ -1,7 +1,7 @@
 <template>
   <div class="credential-input">
     <input class="credential-input__input" v-model="value" @keyup="keyup" :autofocus="autofocus" :type="type" :placeholder="placeholder" />
-    <div class="credential-input__errors">
+    <div class="credential-input__errors" v-show="validationErrors.length">
       <Errors :errors="validationErrors" />
     </div>
   </div>
@@ -59,4 +59,7 @@
     font-size rem(16px)
     background-color transparent
     color black
+
+  .credential-input__errors
+    padding 5px
 </style>

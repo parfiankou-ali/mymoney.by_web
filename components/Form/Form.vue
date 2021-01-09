@@ -6,6 +6,7 @@
 
 <script>
   import {InternalErrorHttpException} from '../../app/Exceptions/App/InternalErrorHttpException'
+  import {ValidationErrorHttpException} from "../../app/Exceptions/App/ValidationErrorHttpException";
 
   export default {
     name: 'Form',
@@ -49,14 +50,14 @@
         }).catch((error) => {
           try {
             const response = error.response.data
-            if (response.status_code === 422) {
+            if (response.status_code === ValidationErrorHttpException.StatusCode) {
               this.displayValidationErrors(response.response)
+              this.onError(response)
             } else {
               this.removeValidationErrors()
               this.onError(response)
             }
           } catch (e) {
-            console.log(e, error)
             this.removeValidationErrors()
             this.onError({
               status_code: InternalErrorHttpException.StatusCode

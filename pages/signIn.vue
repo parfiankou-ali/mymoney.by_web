@@ -1,25 +1,27 @@
 <template>
   <Page>
     <AlignXYCenter>
-      <div class="login__form">
+      <div class="signIn__form">
         <Form v-slot:form="formSlot" request="user.signIn" method="post" :on-success="signIn" :on-error="handleError">
           <AlignXCenter>
             <Logo />
           </AlignXCenter>
-          <div class="login__credentials">
+          <div class="signIn__credentials">
             <Credentials />
           </div>
-          <div class="login__errors" v-if="errors.length">
+          <div class="signIn__errors" v-if="errors.length">
             <Errors :errors="errors" />
           </div>
-          <SplitY>
+          <SplitX medium>
             <template slot="left">
               <Button primary large block :show-throbbler="formSlot.form.isProcessingRequest" @click.native="formSlot.form.submit">{{ $t('Auth.SignIn') }}</Button>
             </template>
             <template slot="right">
-              <Button secondary large block>{{ $t('Auth.SignUp') }}</Button>
+              <NuxtLink to="/signUp">
+                <Button secondary large block>{{ $t('Auth.SignUp') }}</Button>
+              </NuxtLink>
             </template>
-          </SplitY>
+          </SplitX>
         </Form>
       </div>
     </AlignXYCenter>
@@ -32,16 +34,19 @@ import Logo from '../components/Navigation/Logo'
 import Credentials from '../components/Form/Credentials/Credentials'
 import Button from '../components/Standart/Button'
 import Form from '../components/Form/Form'
-import SplitY from '../components/Layout/SplitY'
+import SplitX from '../components/Layout/SplitX'
 import AlignXYCenter from '../components/Layout/AlignXYCenter'
 import AlignXCenter from '../components/Layout/AlignXCenter'
-import {InvalidCredentialsHttpException} from '../app/Exceptions/User/InvalidCredentialsHttpException'
 import Errors from "../components/Form/Errors";
+
+import {InvalidCredentialsHttpException} from '../app/Exceptions/User/InvalidCredentialsHttpException'
 import {InternalErrorHttpException} from "../app/Exceptions/App/InternalErrorHttpException";
+import {ValidationErrorHttpException} from "../app/Exceptions/App/ValidationErrorHttpException";
+
 import { Plugins } from '@capacitor/core'
 
 export default {
-  components: {Errors, AlignXCenter, AlignXYCenter, SplitY, Form, Button, Credentials, Logo, Page},
+  components: {Errors, AlignXCenter, AlignXYCenter, SplitX, Form, Button, Credentials, Logo, Page},
   layout: 'login',
   data () {
     return {
@@ -62,6 +67,8 @@ export default {
         this.errors.push(this.$t('Exceptions.User.InvalidCredentials'))
       } else if (error.status_code === InternalErrorHttpException.StatusCode) {
         this.errors.push(this.$t('Exceptions.App.InternalError'))
+      } else if (error.status_code === ValidationErrorHttpException.StatusCode) {
+        // Do nothing.
       }
     },
     removeErrors () {
@@ -75,16 +82,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .login__form
+  .signIn__form
     padding 20px
     width 100%
     max-width 400px
 
-  .login__credentials
+  .signIn__credentials
     padding-top 30px
     padding-bottom 20px
 
-  .login__errors
+  .signIn__errors
     padding-bottom 20px
 
 </style>
