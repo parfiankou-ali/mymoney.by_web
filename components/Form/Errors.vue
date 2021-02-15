@@ -1,5 +1,5 @@
 <template>
-  <div class="errors" v-show="errors.length">
+  <div class="errors" v-show="errors.length" :class="classes">
     <div class="errors__error" v-for="error in errors">
       {{ error }}
     </div>
@@ -13,6 +13,16 @@
       errors: {
         type: Array,
         required: true
+      },
+      large: {
+        type: Boolean
+      }
+    },
+    computed: {
+      classes () {
+        return [
+          this.large ? 'errors--large' : ''
+        ]
       }
     }
   }
@@ -21,10 +31,13 @@
 <style lang="stylus" scoped>
   .errors
     padding 2px 4px
-    font-size rem(16px)
+    font-size rem(14px)
     border-radius 5px
     line-height 1
     font-weight 600
-    background-color rgba(255, 0, 0, 0.1)
-    color red
+    background-color #f9ebf2
+    color #b30121
+
+  .errors--large
+    padding 6px 10px
 </style>

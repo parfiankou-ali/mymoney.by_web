@@ -3,25 +3,28 @@
     <AlignXYCenter>
       <div class="signIn__form">
         <Form v-slot:form="formSlot" request="user.signIn" method="post" :on-success="signIn" :on-error="handleError">
-          <AlignXCenter>
-            <Logo />
-          </AlignXCenter>
-          <div class="signIn__credentials">
-            <Credentials />
-          </div>
-          <div class="signIn__errors" v-if="errors.length">
+          <Section margin-bottom-large>
+            <AlignXCenter>
+              <Logo />
+            </AlignXCenter>
+          </Section>
+          <Section margin-bottom-tiny>
+            <Input name="email" type="email" :placeholder="$t('Auth.Email')" primary large autofocus />
+          </Section>
+          <Section margin-bottom-small>
+            <Input name="password" type="password" :placeholder="$t('Auth.Password')" primary large />
+          </Section>
+          <Section margin-bottom-small v-if="errors.length">
             <Errors :errors="errors" />
-          </div>
-          <SplitX medium>
-            <template slot="left">
-              <Button primary large block :show-throbbler="formSlot.form.isProcessingRequest" @click.native="formSlot.form.submit">{{ $t('Auth.SignIn') }}</Button>
-            </template>
-            <template slot="right">
-              <NuxtLink to="/signUp">
-                <Button secondary large block>{{ $t('Auth.SignUp') }}</Button>
-              </NuxtLink>
-            </template>
-          </SplitX>
+          </Section>
+          <Section margin-bottom-small>
+            <Button primary large block :show-throbbler="formSlot.form.isProcessingRequest" @click.native="formSlot.form.submit">{{ $t('Auth.SignIn') }}</Button>
+          </Section>
+          <Section>
+            <NuxtLink to="/signUp" class="block">
+              <Button secondary large block>{{ $t('Auth.SignUp') }}</Button>
+            </NuxtLink>
+          </Section>
         </Form>
       </div>
     </AlignXYCenter>
@@ -44,9 +47,11 @@ import {InternalErrorHttpException} from "../app/Exceptions/App/InternalErrorHtt
 import {ValidationErrorHttpException} from "../app/Exceptions/App/ValidationErrorHttpException";
 
 import { Plugins } from '@capacitor/core'
+import Section from "../components/Layout/Section";
+import Input from "../components/Standart/Input";
 
 export default {
-  components: {Errors, AlignXCenter, AlignXYCenter, SplitX, Form, Button, Credentials, Logo, Page},
+  components: {Input, Section, Errors, AlignXCenter, AlignXYCenter, SplitX, Form, Button, Credentials, Logo, Page},
   layout: 'login',
   data () {
     return {

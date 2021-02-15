@@ -15,5 +15,5 @@
 <style lang="stylus" scoped>
   .logo
     display inline-flex
-    width 250px
+    width 220px
 </style>

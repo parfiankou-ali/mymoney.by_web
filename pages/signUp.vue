@@ -1,32 +1,13 @@
 <template>
   <Page>
     <AlignXYCenter>
-      <div class="signUn__form">
+      <div class="signUp__form">
         <Form v-slot:form="formSlot" request="user.signUp" method="post" :on-success="signIn" :on-error="handleError">
           <AlignXCenter>
             <Logo />
           </AlignXCenter>
-          <div class="signUn__body">
-            <Section>
-              <SplitX small>
-                <template slot="left">
-                  <Input primary large name="last_name" type="text" :placeholder="$t('Auth.LastName')" autofocus />
-                </template>
-                <template slot="right">
-                  <Input primary large name="first_name" type="text" :placeholder="$t('Auth.FirstName')" />
-                </template>
-              </SplitX>
-            </Section>
-            <Section>
-              <SplitX small>
-                <template slot="left">
-                  <Input primary large name="birth_date" type="date" :placeholder="$t('Auth.BirthDate')" />
-                </template>
-                <template slot="right">
-                  Пол
-                </template>
-              </SplitX>
-            </Section>
+          <div class="signUp__body">
+            body
           </div>
           <div class="signUn__errors" v-if="errors.length">
             <Errors :errors="errors" />
@@ -37,7 +18,7 @@
             </template>
             <template slot="right">
               <NuxtLink to="/signIn">
-                <Button secondary large block>{{ $t('Auth.SignIn') }}</Button>
+                <Button text large block>{{ $t('Auth.SignIn') }}</Button>
               </NuxtLink>
             </template>
           </SplitX>
@@ -102,16 +83,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .signUn__form
+  .signUp__form
     padding 20px
     width 100%
     max-width 400px
 
-  .signUn__body
+  .signUp__body
     padding-top 30px
     padding-bottom 20px
 
-  .signUn__errors
+  .signUp__errors
     padding-bottom 20px
 
 </style>

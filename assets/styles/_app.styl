@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
-
 @require "./_resources.styl"
+@require 'app/_fonts.styl'
 
 *
 *:before
@@ -16,7 +15,7 @@ body
 button
 input
 textarea
-  font-family 'Montserrat', 'Arial', sans-serif
+  font-family font-face-primary
 
 input
 textarea
@@ -33,4 +32,8 @@ a
   text-decoration none
 
 svg
+  width 100%
+
+.block
+  display block
   width 100%

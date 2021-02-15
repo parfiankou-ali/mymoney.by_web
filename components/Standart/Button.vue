@@ -3,7 +3,7 @@
     <div class="button__throbbler" v-if="showThrobbler">
       <Throbbler />
     </div>
-    <div class="button_body" v-else>
+    <div class="button__body" v-else>
       <div v-if="$slots.icon" class="button__icon">
         <slot name="icon" />
       </div>
@@ -26,6 +26,9 @@
       secondary: {
         type: Boolean
       },
+      text: {
+        type: Boolean
+      },
       large: {
         type: Boolean
       },
@@ -41,6 +44,7 @@
         return [
           this.primary ? 'button--style-primary' : '',
           this.secondary ? 'button--style-secondary' : '',
+          this.text ? 'button--style-text' : '',
           this.large ? 'button--size-large' : '',
           this.block ? 'button--block' : '',
         ]
@@ -62,10 +66,11 @@
     align-items center
 
   .button--size-large
-    height rem(40px)
-    padding rem(4px) rem(16px)
+    height 45px
+    padding 4px 16px
     font-size rem(16px)
-    border-radius rem(5px)
+    font-weight 600
+    border-radius 10px
 
   .button--style-primary
     color white
@@ -77,11 +82,29 @@
 
   .button--style-secondary
     color black
-    background-color #d0d3dc
+    background-color white
+    border 1px solid rgba(0, 0, 0, 0.2)
     &:hover
       background-color darken(#d0d3dc, 20%)
     & .button__icon
       fill black
+
+  .button--style-text
+    color #57575f
+    background-color transparent
+    & .button__body
+      position relative
+      &:before
+        content ''
+        position absolute
+        left 0
+        right 0
+        bottom -1px
+        border-top 2px dotted #57575f
+    &:hover
+      background-color rgba(0, 0, 0, 0.1)
+    & .button__icon
+      fill #57575f
 
   .button--block
     width 100%
